@@ -8,6 +8,7 @@ let money = 0,
     zertek = 0,
     filesteal = 0,
     serv = 0,
+    snk = 0,
     joueur = 0;
 
 // Coût item : 
@@ -18,6 +19,7 @@ let pscript = 15,
     pddos = 250,
     pzertek = 300,
     pfilesteal = 350,
+    psnk = 375,
     pserv = 450;
     
 // Stock du rendement : 
@@ -29,6 +31,7 @@ let rmoney = 0.2,
     rddos = 0,
     rzertek = 0,
     rfilesteal = 0,
+    rsnk = 0,
     rserv = 0;
 
 // Click :
@@ -135,6 +138,21 @@ let rmoney = 0.2,
         }
     });
 
+// SNK :
+document.getElementById("button9").addEventListener("click", function() {
+    if (money - psnk >= 0) { 
+    money = money - psnk;
+    snk = snk + 1;
+    rsnk = snk * 3.2;
+    psnk = psnk * 1.15;
+    document.getElementById("money").innerHTML = "Argent récolté : " + Math.round(money) + "€" ;
+    document.getElementById("snk").innerHTML = snk ;
+    document.getElementById("psnk").innerHTML = Math.round(psnk) + "€";
+    new Audio("sound/upgrade.mp3").play();
+    }
+});
+
+
 // Hebergeur ( Wollah les amis il fait pitier ) :
     document.getElementById("button8").addEventListener("click", function() {
         if (money - pserv >= 0) { 
@@ -150,11 +168,11 @@ let rmoney = 0.2,
     });
 
 setInterval(function(){ 
-    money = money + rscript + rnoclip + rdox + rmap + rddos + rzertek + rfilesteal;
+    money = money + rscript + rnoclip + rdox + rmap + rddos + rzertek + rfilesteal + rsnk + rserv;
     document.getElementById("money").innerHTML = "Argent récolté : " + Math.round(money) + "€";
 }, 1000);
 
 setInterval(function(){ 
-    joueur = joueur + ddos + zertek + filesteal + dox + noclip + map + script;
+    joueur = joueur + ddos + zertek + filesteal + dox + noclip + map + script + snk + serv;
     document.getElementById("joueur").innerHTML = "Nombre de Joueurs : " + joueur ;
 }, 13000);
