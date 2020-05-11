@@ -1,2 +1,5 @@
 # PClicker
-If you want to be a D4RK HAXOR
+
+
+Simply cookie clicker like but made for a community.
+It's an end-of-year terminal project.
